@@ -1,0 +1,11 @@
+.profile {
+  display: grid;
+  grid-template-columns: 40% 60%;
+  align-items: start;
+}
+
+.profile-action {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}

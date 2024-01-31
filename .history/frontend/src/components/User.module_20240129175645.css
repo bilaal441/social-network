@@ -1,0 +1,12 @@
+.userinfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.userinfo .name {
+  font-size: 0.8rem;
+}
+
+.userinfo .name {
+  font-size: 0.6rem;
+}

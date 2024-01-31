@@ -1,0 +1,15 @@
+.active {
+  background: none;
+  border-bottom: 2px solid #d4d2d2;
+  background: red;
+}
+
+.action {
+  list-style: none;
+}
+
+.action button {
+  outline: none;
+  background-color: none;
+  border: none;
+}

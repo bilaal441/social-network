@@ -1,0 +1,10 @@
+.profile {
+  display: flex;
+  fle
+}
+
+.profile-action {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}

@@ -1,0 +1,21 @@
+.card {
+  margin: 1rem;
+  padding: 1rem;
+  background-color: #eeeeee;
+}
+
+.image {
+  margin-bottom: 0.5rem;
+}
+
+.profileContainer {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.profile-action {
+  display: flex;
+  justify-content: space-between;
+
+  margin-top: 1rem;
+}
