@@ -1,0 +1,8 @@
+.profile {
+  display: grid;
+  grid-template-columns: 40% 60%;
+}
+
+.profile-action{
+  
+}

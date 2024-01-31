@@ -1,0 +1,11 @@
+.profile {
+  display: grid;
+  grid-template-columns: repeat(2,,);
+  align-items: start;
+}
+
+.profile-action {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}

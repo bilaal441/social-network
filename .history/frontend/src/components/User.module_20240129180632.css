@@ -1,0 +1,13 @@
+.userinfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.name {
+  
+}
+
+.username {
+  color: #e7e1e1;
+  font-size: 0.7rem;
+}

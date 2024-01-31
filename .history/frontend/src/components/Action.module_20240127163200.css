@@ -1,0 +1,16 @@
+.active {
+  border-bottom: 2px solid #d4d2d2;
+}
+
+.action {
+  list-style: none;
+  font-size: 1.5rem;
+}
+
+.action button  {
+  outline: none;
+  background: none;
+  border: none;
+  color: #808080;
+}
+

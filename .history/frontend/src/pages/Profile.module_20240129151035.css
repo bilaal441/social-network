@@ -1,0 +1,12 @@
+.profile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: ;
+}
+
+.profile-action {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
