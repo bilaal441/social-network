@@ -1,0 +1,10 @@
+.actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 1rem 1.5rem;
+  gap: 2rem;
+}
+  .links{
+     text
+  }
