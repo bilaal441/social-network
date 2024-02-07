@@ -1,0 +1,18 @@
+import {Container, Button} from "react-bootstrap";
+
+const PProfile = ({name, userName, }) => {
+  return (
+    <div
+      style={{
+        marginTop: "6rem",
+        textAlign: "center",
+        display: "flex",
+
+        gap: "3rem",
+      }}
+    >
+      <User userName={`${user.username}`} isLoggedIn={true} name={user.name} />
+      <Button>Follow</Button>
+    </div>
+  );
+};
