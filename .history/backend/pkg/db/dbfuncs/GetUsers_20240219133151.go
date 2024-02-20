@@ -1,0 +1,3 @@
+package dbfuncs
+
+func Getusers()
