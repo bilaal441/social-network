@@ -1,3 +1,0 @@
-package dbfuncs
-
-G
