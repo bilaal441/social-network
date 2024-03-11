@@ -1,0 +1,18 @@
+.actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 1rem 1.5rem;
+  gap: 2rem;
+}
+.links {
+  text-decoration: none;
+  color: #252424;
+}
+
+
+.followers{
+  display: flex;
+  flex-direction: column;
+  font-size: 0.7em;
+}
