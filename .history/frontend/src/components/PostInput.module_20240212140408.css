@@ -1,0 +1,4 @@
+.custom-input-group input:focus {
+  outline: none !important;
+  border: n;
+}
