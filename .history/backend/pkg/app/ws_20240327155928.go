@@ -1,4 +1,4 @@
-package app
+// package app
 
 // //general notes/ ideas:
 // //consider redoing database tables to combine private messages, group messages and various types of notificaitons in one table

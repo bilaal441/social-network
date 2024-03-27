@@ -92,7 +92,7 @@ func GetUserById(id string) (User, error) {
 //figure out whether to delete or rewrite or keep etc.
 
 func Getusers() ([]User, error) {
-	rows, err := db.Query("SELECT Id,FirstName, LastName, Nickname, Profile, AboutMe, Privacy_setting, DOB, CreatedAt FROM Users")
+	rows, err := database.Query("SELECT Id,FirstName, LastName, Nickname, Profile, AboutMe, Privacy_setting, DOB, CreatedAt FROM Users")
 	if err != nil {
 		return []User{}, err
 	}
@@ -101,7 +101,7 @@ func Getusers() ([]User, error) {
 
 	for rows.Next() {
 		var newUser User
-		err := rows.Scan(&newUser.Id, &newUser.FirstName, &newUser.LastName, &newUser.Nickname, &newUser.Profile, &newUser.AboutMe, &newUser.PrivacySetting, &newUser.DOB, &newUser.CreatedAt)
+		err := rows.Scan(&newUser.Id, &newUser.FirstName, &newUser.LastName, &newUser.Nickname, &newUser.Profile, &newUser.AboutMe, &newUser.Privacy_setting, &newUser.DOB, &newUser.CreatedAt)
 		if err != nil {
 			return []User{}, err
 		}

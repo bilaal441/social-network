@@ -57,7 +57,7 @@ func HandleNewUser(w http.ResponseWriter, r *http.Request) {
 		// 	return
 		// }
 
-		// _, isexistemail, err := dbfuncs.CheckValueInDB(w, r, email, "Email")
+		_, isexistemail, err := dbfuncs.(w, r, email, "Email")
 
 		if err != nil {
 
@@ -65,27 +65,13 @@ func HandleNewUser(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-		// if isexistemail {
+		if isexistemail {
 
-		// 	http.Error(w, `{"error": "Email is already take please choose another one !"}`, http.StatusBadRequest)
-		// 	return
-		// }
-		hashedPass, err := dbfuncs.HashPassword(password)
-		if err != nil {
-			http.Error(w, `{"error": "`+err.Error()+`"}`, http.StatusBadRequest)
+			http.Error(w, `{"error": "Email is already take please choose another one !"}`, http.StatusBadRequest)
 			return
 		}
-		user := dbfuncs.User{
-			Email:     email,
-			Password:  hashedPass,
-			FirstName: firstName,
-			LastName:  lastName,
-			Nickname:  NickName,
-			DOB:       dob,
-			AboutMe:   aboutMe,
-			Profile:   fileName,
-		}
-		err = dbfuncs.AddUser(&user)
+
+		err = dbfuncs.AddUser(NickName, firstName, lastName, email, fileName, aboutMe, "private", dob, HashPassord(password))
 
 		if err != nil {
 			http.Error(w, `{"error": "`+err.Error()+`"}`, http.StatusBadRequest)

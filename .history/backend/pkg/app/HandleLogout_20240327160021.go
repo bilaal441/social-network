@@ -18,7 +18,7 @@ func HandleLogout(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 		valid, err := dbfuncs.ValidateCookie(cookie.Value)
-		if !valid || err != nil {
+		if !valid {
 			http.Error(w, `{"error": "something went wrong please login 2"}`, http.StatusUnauthorized)
 			return
 		}
