@@ -1,6 +1,0 @@
-package dbfuncs
-
-func Getusers(){
-
-	
-}
