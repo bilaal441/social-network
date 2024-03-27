@@ -6,6 +6,6 @@ CREATE TABLE IF NOT EXISTS Notifications(
    ReceiverId TEXT NOT NULL,
    SenderId TEXT NOT NULL,
    Seen BOOLEAN NOT NULL,
-   FOREIGN KEY (ReceiverId) REFERENCES Users(Id),
+   FOREIGN KEY (ReceverId) REFERENCES Users(Id),
    FOREIGN KEY (SenderId) REFERENCES Users(Id)
 );

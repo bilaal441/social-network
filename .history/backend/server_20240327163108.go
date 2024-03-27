@@ -5,6 +5,8 @@ import (
 	handlefuncs "backend/pkg/handlefuncsold"
 	"fmt"
 	"net/http"
+
+	"backend/pkg/db/sqlite"
 )
 
 func wrapperHandler(handler http.HandlerFunc) http.HandlerFunc {
@@ -29,7 +31,7 @@ func wrapperHandler(handler http.HandlerFunc) http.HandlerFunc {
 func main() {
 
 	// DeleteUserByUsername("bilal")
-	// sqlite.Migrate()
+	sqlite
 	http.HandleFunc("/ws", wrapperHandler(handlefuncs.HandleConnection))
 
 	http.HandleFunc("/newUser", handlefuncs.HandleNewUser)
