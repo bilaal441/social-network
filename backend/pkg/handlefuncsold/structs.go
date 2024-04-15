@@ -17,19 +17,20 @@ func SetDatabase(db *sql.DB) {
 type Image struct {
 	Data string `json:"data"`
 }
-type User struct {
-	Email      string    `json:"email"`
-	NickName   string    `json:"nickname"`
-	FirstName  string    `json:"firstName"`
-	LastName   string    `json:"lastName"`
-	DOB        string    `json:"age"`
-	Gender     string    `json:"gender"`
-	Password   string    `json:"password"`
-	Id         uuid.UUID `json:"id"`
-	Created_at time.Time `json:"created_at"`
-	Aboutme    string    `json:"aboutme"`
-	Avatar     *Image    `json:"avatar,omitempty"`
-}
+
+// type User struct {
+// 	Email      string    `json:"email"`
+// 	NickName   string    `json:"nickname"`
+// 	FirstName  string    ` json:"firstName"`
+// 	LastName   string    `json:"lastName"`
+// 	DOB        string    `json:"age"`
+// 	Gender     string    `json:"gender"`
+// 	Password   string    `json:"password"`
+// 	Id         uuid.UUID `json:"id"`
+// 	Created_at time.Time `json:"created_at"`
+// 	Aboutme    string    `json:"aboutme"`
+// 	Avatar     *Image    `json:"avatar,omitempty"`
+// }
 
 type Categories struct {
 	Id          uuid.UUID `json:"id"`
@@ -39,15 +40,20 @@ type Categories struct {
 }
 
 type Post struct {
-	Id         uuid.UUID `json:"id"`
-	UserId     uuid.UUID `json:"userid"`
-	Title      string    `json:"title"`
-	Body       string    `json:"body"`
-	Categories []string  `json:"categories"`
-	Created_at time.Time `json:"created_at"`
-	Comments   []Comment `json:"comments"`
-	Likes      int       `json:"likes"`
-	Dislikes   int       `json:"dislikes"`
+	Id           uuid.UUID `json:"id"`
+	UserId       uuid.UUID `json:"userid"`
+	Title        string    `json:"title"`
+	Body         string    `json:"body"`
+	Categories   []string  `json:"categories"`
+	CreatedAt    time.Time `json:"createdAt"`
+	Comments     []Comment `json:"comments"`
+	Likes        int       `json:"likes"`
+	Dislikes     int       `json:"dislikes"`
+	PrivacyLevel string    `json:"privacyLevel"`
+	CreatorId    string    `json:"creatorId "`
+	Image    *Image    `json:"avatar,omitempty"`  
+	
+	 
 }
 type Comment struct {
 	ID        string    `json:"id"`
@@ -87,12 +93,4 @@ type Message struct {
 	Created     string `json:"created"`
 	Type        string `json:"type"`
 	Typing      bool   `json:"typing"`
-}
-
-type Event struct {
-	EventId     string `json:"EventId"`
-	GroupId     string `json:"GroupId"`
-	Title       string `json:"Title"`
-	Description string `json:"Description"`
-	CreatorId   string `json:"CreatorId"`
 }

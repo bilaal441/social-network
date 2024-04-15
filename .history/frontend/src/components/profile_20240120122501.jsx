@@ -1,8 +1,0 @@
-const profile = (props)=>{
-
-
-
-}
-
-
-export

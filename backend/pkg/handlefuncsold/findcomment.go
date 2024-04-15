@@ -1,7 +1,6 @@
 package handlefuncs
 
 import (
-	"backend/pkg/db/dbfuncs"
 	"database/sql"
 	"fmt"
 
@@ -21,7 +20,7 @@ func FindPostsComment(id string) (Comment, error) {
 	var one Comment
 	var userId string
 	for rows.Next() {
-		err = rows.Scan(&one.Id, &one.Body, &userId, &one.PostId, &one.CreatedAt)
+		err = rows.Scan(&one.ID, &one.Body, &userId, &one.PostID, &one.CreatedAt)
 		if err != nil {
 			return Comment{}, err
 		}
@@ -34,6 +33,6 @@ func FindPostsComment(id string) (Comment, error) {
 		}
 
 	}
-	one.Likes, one.Dislikes = dbfuncs.CountCommentReacts(one.Id)
+	// one.Likes, one.Dislikes = dbfuncs.CountCommentReacts(one.ID)
 	return one, nil
 }

@@ -1,9 +1,9 @@
 package handlefuncs
 
 import (
-	dbfuncs "backend/pkg/db/dbfuncs"
 	"encoding/json"
 	"net/http"
+	dbfuncs "backend/pkg/db/dbfuncs"
 )
 
 func HandleValidateCookie(w http.ResponseWriter, r *http.Request) {
@@ -32,17 +32,21 @@ func HandleValidateCookie(w http.ResponseWriter, r *http.Request) {
 		//		http.Error(w, `{"error": "something went wrong "}`, http.StatusBadRequest)
 		//		return
 		//	}
-		userId, profileImage, nickname, err := dbfuncs.GetUserDataFromSession(cookie.Value)
+		id, err := dbfuncs.GetUserIdFromCookie(cookie.Value)
+		if err != nil {
+			http.Error(w, `{"error": "`+err.Error()+`"}`, http.StatusInternalServerError)
+			return
+		}
+		user, err := dbfuncs.GetUserById(id)
 
 		if err != nil {
 			http.Error(w, `{"error": "`+err.Error()+`"}`, http.StatusInternalServerError)
 			return
 		}
+
 		response := map[string]interface{}{
-			"success":    true,
-			"username":   nickname,
-			"profileImg": profileImage,
-			"id":         userId,
+			"success": true,
+			"user":    user,
 		}
 
 		json.NewEncoder(w).Encode(response)

@@ -1,9 +1,9 @@
 package handlefuncs
 
 import (
-	"backend/pkg/db/dbfuncs"
 	"encoding/json"
 	"net/http"
+	dbfuncs "backend/pkg/db/dbfuncs"
 )
 
 type DataID struct {
@@ -11,7 +11,6 @@ type DataID struct {
 }
 
 func HandleGetUsers(w http.ResponseWriter, r *http.Request) {
-
 	if r.Method == http.MethodPost {
 
 		users, err := dbfuncs.Getusers()
