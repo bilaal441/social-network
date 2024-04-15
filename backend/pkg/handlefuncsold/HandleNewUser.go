@@ -58,7 +58,9 @@ func HandleNewUser(w http.ResponseWriter, r *http.Request) {
 		Nickname:  nickname,
 		DOB:       dob,
 		AboutMe:   aboutMe,
-		Profile:   fileName,
+		Avatar:    fileName,
+		PrivacySetting: "private",
+
 	}
 
 	isexistemail, err := dbfuncs.CheckEmailInDB(email)

@@ -42,7 +42,7 @@ func HandleLogin(w http.ResponseWriter, r *http.Request) {
 		// 	imgUrl         string
 		// )
 		// // var storedPassword string
-		// err := dbfuncs.QueryRow("SELECT Id, Password, Nickname,  Profile  FROM Users WHERE Email=?", entredData.Email).Scan(&id, &storedPassword, &username, &imgUrl)
+		// err := dbfuncs.QueryRow("SELECT Id, Password, Nickname,  Avatar  FROM Users WHERE Email=?", entredData.Email).Scan(&id, &storedPassword, &username, &imgUrl)
 		// if err != nil {
 		// 	fmt.Println(err.Error(), "error after getting data")
 		// 	http.Error(w, `{"error": "your email/nickname or password is incorrect"}`, http.StatusBadRequest)
@@ -71,6 +71,8 @@ func HandleLogin(w http.ResponseWriter, r *http.Request) {
 			return
 
 		}
+
+		fmt.Println("session might expire, but who really knows ...", session.Expires)
 
 		http.SetCookie(w, &http.Cookie{
 			Name:     "user_token",

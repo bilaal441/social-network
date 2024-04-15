@@ -1,16 +1,16 @@
 package handlefuncs
 
 import (
+	dbfuncs "backend/pkg/db/dbfuncs"
 	"encoding/json"
 	"net/http"
-	dbfuncs "backend/pkg/db/dbfuncs"
 )
 
 func HandleValidateCookie(w http.ResponseWriter, r *http.Request) {
 	Cors(&w, r)
 
 	if r.Method == http.MethodGet {
-		cookie, _ := r.Cookie("user_token")
+		cookie, err:= r.Cookie("user_token")
 
 		// 		var username string
 		// 		var imgURL string
@@ -19,7 +19,7 @@ func HandleValidateCookie(w http.ResponseWriter, r *http.Request) {
 		// 		// var storedPassword string
 
 		// 		query := `
-		//     SELECT  Sessions.userId, Users.Profile
+		//     SELECT  Sessions.userId, Users.Avatar
 		// FROM Sessions
 		// JOIN Users ON Sessions.UserID = Users.Id
 		// WHERE Sessions.Id = ?
@@ -32,8 +32,18 @@ func HandleValidateCookie(w http.ResponseWriter, r *http.Request) {
 		//		http.Error(w, `{"error": "something went wrong "}`, http.StatusBadRequest)
 		//		return
 		//	}
+
+
+
+		if cookie == nil || err != nil{
+			http.Error(w, `{"error": "`+err.Error()+`"}`, http.StatusInternalServerError)
+			return
+
+		}
 		id, err := dbfuncs.GetUserIdFromCookie(cookie.Value)
+
 		if err != nil {
+
 			http.Error(w, `{"error": "`+err.Error()+`"}`, http.StatusInternalServerError)
 			return
 		}

@@ -4,6 +4,26 @@ import (
 	"database/sql"
 )
 
+func IsFollowing(userId, ownerId string) (bool, error) {
+	isFollowing := false
+	query := `SELECT EXISTS(SELECT 1 FROM Follows WHERE FollowerId=? AND FollowingId=? AND Status=?)`
+	err := db.QueryRow(query, userId, ownerId, "accepted").Scan(&isFollowing)
+	if err != nil {
+		return false, err
+	}
+	return isFollowing, nil
+}
+
+func IsPending(userId, ownerId string) (bool, error) {
+	isPending := false
+	query := `SELECT EXISTS(SELECT 1 FROM Follows WHERE FollowerId=? AND FollowingId=? AND Status=?)`
+	err := db.QueryRow(query, userId, ownerId, "pending").Scan(&isPending)
+	if err != nil {
+		return false, err
+	}
+	return isPending, nil
+}
+
 func AddFollow(follow *Follow) error {
 	statement, err := db.Prepare("INSERT INTO Follows VALUES (?,?,?)")
 	if err != nil {
@@ -15,17 +35,20 @@ func AddFollow(follow *Follow) error {
 
 // Only to be used when updating a pending follow to accepted follow - only necessary if following private user
 func AcceptFollow(followerId, followingId string) error {
-	statement, err := db.Prepare("UPDATE Follows SET Status=?, WHERE FollowerId=? AND FollowingId=?")
+
+	statement, err := db.Prepare("UPDATE Follows SET Status=?  WHERE FollowerId=? AND FollowingId=?")
 	if err != nil {
 		return err
 	}
+
 	_, err = statement.Exec("accepted", followerId, followingId)
+
 	return err
 }
 
 // may not use this and can just delete follow from table instead on rejected a follow request
 func RejectFollow(followerId, followingId string) error {
-	statement, err := db.Prepare("UPDATE Follows SET Status=?, WHERE FollowerId=? AND FollowingId=?")
+	statement, err := db.Prepare("UPDATE Follows SET Status=? WHERE FollowerId=? AND FollowingId=?")
 	if err != nil {
 		return err
 	}
@@ -39,7 +62,7 @@ func DeleteFollow(followerId, followingId string) error {
 	if err != nil {
 		return err
 	}
-	_, err = statement.Exec(followerId, followerId)
+	_, err = statement.Exec(followerId, followingId)
 	return err
 }
 
